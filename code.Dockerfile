@@ -12,9 +12,9 @@ RUN mkdir -p ${DAGSTER_HOME}
 
 WORKDIR ${DAGSTER_HOME}
 
-RUN mkdir -p ${DAGSTER_HOME}dags/
+# RUN mkdir -p ${DAGSTER_HOME}dags/
 
-VOLUME "${DAGSTER_HOME}dags/"
+# VOLUME "${DAGSTER_HOME}dags/"
 
 COPY dagster.yaml requirements_user_code.txt ${DAGSTER_HOME}
 
@@ -24,6 +24,6 @@ RUN pip install -r ${DAGSTER_HOME}requirements_user_code.txt
 EXPOSE 4000
 
 # CMD allows this to be overridden from run launchers or executors that want
-# to run other commands against your repository
-ENV directory=${DAGSTER_HOME}dags/
-CMD ["dagster", "api", "grpc","--module-name","dags","-h", "0.0.0.0", "-p", "4000"]
+# CMD ["dagster", "api", "grpc","--module-name","dags","-h", "0.0.0.0", "-p", "4000"]
+
+CMD ["dagster", "code-server", "start","--module-name","dags","-h", "0.0.0.0", "-p", "4000"]

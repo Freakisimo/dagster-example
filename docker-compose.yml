@@ -24,9 +24,9 @@ services:
       context: .
       args:
         DAGSTER_HOME: ${DAGSTER_HOME}
-      dockerfile: ./Dockerfile_user_code
+      dockerfile: ./code.Dockerfile
     container_name: docker_user_code
-    image: docker_user_code_image
+    image: docker_code_image
     restart: always
     environment:
       DAGSTER_HOME: "${DAGSTER_HOME}"
@@ -44,7 +44,7 @@ services:
       context: .
       args:
         DAGSTER_HOME: ${DAGSTER_HOME}
-      dockerfile: ./Dockerfile_dagster
+      dockerfile: ./dagster.Dockerfile
     entrypoint:
       - dagster-webserver
       - -h
@@ -77,7 +77,7 @@ services:
       context: .
       args:
         DAGSTER_HOME: ${DAGSTER_HOME}
-      dockerfile: ./Dockerfile_dagster
+      dockerfile: ./dagster.Dockerfile
     entrypoint:
       - dagster-daemon
       - run

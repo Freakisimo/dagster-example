@@ -36,5 +36,8 @@ run_coordinator:
       - key: "dagster/backfill"
         limit: 2
 
+code_servers:
+  reload_timeout: 600
+
 telemetry:
   enabled: false
