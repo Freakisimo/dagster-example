@@ -1,4 +1,7 @@
-from dagster import Definitions, load_assets_from_modules
+from dagster import Definitions
+
+from dags.maps import MAPS
 
 defs = Definitions(
+    assets=MAPS
 )

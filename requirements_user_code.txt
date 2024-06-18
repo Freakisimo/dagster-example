@@ -1,3 +1,8 @@
 dagster==1.7.*
 dagster-postgres==0.23.9
 dagster-docker==0.23.9
+overpy==0.7
+requests==2.32.3
+folium==0.17.0
+pandas==2.2.2
+geopandas==0.14.4
