@@ -1,7 +1,7 @@
-from dagster import asset, op, OpExecutionContext
+from dagster import asset
 import overpy
 
-GROUP_NAME = 'overpass_download'
+GROUP_NAME = 'download_overpass'
 
 QUERY = """
 [out:json];
@@ -19,7 +19,7 @@ TYPES = {
 @asset(
     group_name=GROUP_NAME
 )
-def build_queries(context: OpExecutionContext) -> list:
+def build_queries(context) -> list:
     query_list = [
         QUERY.format(**{'ntype':ntype, 'nsubtype':nsubtype})
             for ntype, subtypes in TYPES.items() 
@@ -33,7 +33,7 @@ def build_queries(context: OpExecutionContext) -> list:
 @asset(
     group_name=GROUP_NAME
 )
-def create_query(context, build_queries: list) -> list:
+def create_data(context, build_queries: list) -> list:
     api = overpy.Overpass()
     places = []
     for qry in build_queries:

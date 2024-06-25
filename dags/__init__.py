@@ -1,7 +1,7 @@
 from dagster import Definitions
 
-from dags.maps import MAPS
+from dags.assets import OVERPASS_DATA
 
 defs = Definitions(
-    assets=MAPS
+    assets=OVERPASS_DATA
 )
