@@ -1,7 +1,7 @@
 from dagster import asset
 import overpy
 
-GROUP_NAME = 'download_overpass'
+GROUP_NAME = 'download_overpass_data'
 
 QUERY = """
 [out:json];
@@ -40,9 +40,9 @@ def create_data(context, build_queries: list) -> list:
         result = api.query(qry)
         for node in result.nodes:
             place = {
-                'name': node.tags.get('name', 'n/a'),
-                'brand': node.tags.get('brand', 'n/a'),
-                'cuisine': node.tags.get('cuisine', 'n/a'),
+                'name': node.tags.get('name', 'no proporcionado'),
+                'brand': node.tags.get('brand', 'no proporcionado'),
+                'cuisine': node.tags.get('cuisine', 'no proporcionado'),
                 'lat': node.lat,
                 'lon': node.lon,
                 'id': node.id
