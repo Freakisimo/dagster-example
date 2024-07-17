@@ -20,6 +20,8 @@ COPY dagster.yaml requirements_user_code.txt ${DAGSTER_HOME}
 
 RUN pip install -r ${DAGSTER_HOME}requirements_user_code.txt
 
+RUN pip install pytrends --upgrade
+
 # Run dagster gRPC server on port 4000
 EXPOSE 4000
 
